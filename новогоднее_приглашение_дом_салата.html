@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>11Ж — Жаңа жылдық шақыру 🎄</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Montserrat',sans-serif;
+      background:radial-gradient(circle at top,#0a1f3a,#02040a);
+      color:#fff;
+      overflow-x:hidden;
+      transition:1s ease;
+    }
+
+    section{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:60px 20px;
+      opacity:0;
+      transform:translateY(60px);
+      transition:1s ease;
+    }
+    section.active{opacity:1;transform:translateY(0)}
+
+    h1{font-size:clamp(2.4rem,6vw,4.2rem);font-weight:900;margin-bottom:20px}
+    h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:20px}
+    p{font-size:1.15rem;max-width:800px;line-height:1.7;opacity:.95}
+
+    .btn{
+      margin-top:35px;
+      padding:16px 44px;
+      border-radius:50px;
+      background:linear-gradient(135deg,#ffd54f,#ff9100);
+      color:#000;
+      font-weight:800;
+      text-decoration:none;
+      transition:.4s;
+      box-shadow:0 15px 40px rgba(255,145,0,.45);
+      cursor:pointer;
+    }
+    .btn:hover{transform:scale(1.08)}
+
+    /* Gift */
+    .gift{
+      width:180px;height:180px;
+      background:linear-gradient(145deg,#d32f2f,#8e0000);
+      border-radius:22px;
+      position:relative;
+      cursor:pointer;
+      animation:float 3s ease-in-out infinite;
+      box-shadow:0 25px 60px rgba(0,0,0,.6)
+    }
+    .gift::before{content:"";position:absolute;width:26px;height:180px;background:linear-gradient(#ffeb3b,#f9a825);left:77px}
+    .gift::after{content:"";position:absolute;width:180px;height:26px;background:linear-gradient(#ffeb3b,#f9a825);top:77px}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+
+    /* Firework text */
+    .spark{
+      position:fixed;
+      font-size:18px;
+      font-weight:900;
+      color:#ffd54f;
+      pointer-events:none;
+      animation:boom 1.6s ease-out forwards;
+    }
+    @keyframes boom{
+      to{transform:translate(var(--x),var(--y)) scale(0);opacity:0}
+    }
+
+    /* Snow */
+    .snow{position:fixed;top:-10px;pointer-events:none;animation:fall linear infinite}
+    @keyframes fall{to{transform:translateY(110vh)}}
+
+    /* Final screen */
+    .final{
+      position:fixed;
+      inset:0;
+      background:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      opacity:0;
+      pointer-events:none;
+      transition:1.2s ease;
+      z-index:10;
+    }
+    .final.show{opacity:1;pointer-events:auto}
+
+    footer{padding:25px;opacity:.6}
+
+    /* Background trees */
+    .forest{
+      position:fixed;
+      bottom:0;
+      left:0;
+      width:100%;
+      height:60vh;
+      pointer-events:none;
+      z-index:-1;
+      background:
+        linear-gradient(to top, rgba(0,0,0,.9), transparent 60%),
+        repeating-linear-gradient(
+          90deg,
+          transparent 0 40px,
+          rgba(0,80,40,.35) 40px 80px
+        );
+      filter:blur(0.5px);
+    }
+
+    .garland{
+      position:fixed;
+      top:18vh;
+      left:0;
+      width:100%;
+      height:60px;
+      display:flex;
+      justify-content:space-around;
+      pointer-events:none;
+    }
+    .bulb{
+      width:12px;height:12px;
+      border-radius:50%;
+      background:#ffd54f;
+      box-shadow:0 0 15px #ffd54f;
+      animation:blink 2s infinite alternate;
+    }
+    .bulb:nth-child(2n){animation-delay:.6s}
+    .bulb:nth-child(3n){animation-delay:1.2s}
+
+    @keyframes blink{
+      from{opacity:.3}
+      to{opacity:1}
+    }
+  </style>
+</head>
+<body>
+<div class="bulb"></div><div class="bulb"></div>
+  <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+  <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+  <div class="bulb"></div><div class="bulb"></div><div class="bulb"></div>
+</div>
+
+<section class="active">
+  <h1>11Ж — соңғы жаңа жыл ✨</h1>
+  <p>Бұл жай ғана кеш емес. Бұл — бірге өткізген ең соңғы ұмытылмас сәттер.</p>
+  <a href="#gift" class="btn">Шақыруды ашу</a>
+</section>
+
+<section id="gift">
+  <h2>🎁 Сенің шақыру билетің</h2>
+  <div class="gift" onclick="openGift()"></div>
+</section>
+
+<section id="invite">
+  <h1>Сен шақырылдың 🔥</h1>
+  <p>
+    Бұл кеш тек <b>11Ж</b> үшін.<br><br>
+    📍 <b>Дом Салата</b><br>
+    📅 <b>21.12.2025</b><br>
+    ⏰ <b>Кешке</b><br><br>
+    Музыка, күлкі, жаңа жылдық атмосфера
+    және мектеппен қоштасудың ерекше сәті.
+  </p>
+  <div class="btn" onclick="finalScene()">Мен келемін 💥</div>
+</section>
+
+<footer>© 11Ж • Жаңа жыл 2025</footer>
+
+<div class="final" id="final">
+  <div class="tree"></div>
+  <h1>Сені күтеміз ❄️</h1>
+</div>
+
+<audio id="music" src="https://cdn.pixabay.com/download/audio/2022/12/20/audio_1b8fa0b64b.mp3"></audio>
+
+<script>
+  const sections=document.querySelectorAll('section');
+  window.addEventListener('scroll',()=>{
+    sections.forEach(s=>{
+      if(s.getBoundingClientRect().top<window.innerHeight-150)s.classList.add('active')
+    })
+  })
+
+  function openGift(){
+    document.getElementById('invite').scrollIntoView({behavior:'smooth'});
+    const music=document.getElementById('music');
+    music.volume=0.6; music.play();
+
+    const text='11Ж';
+    for(let i=0;i<80;i++){
+      const s=document.createElement('div');
+      s.className='spark';
+      s.innerText=text[Math.floor(Math.random()*text.length)];
+      s.style.left='50vw';
+      s.style.top='50vh';
+      s.style.setProperty('--x',(Math.random()*900-450)+'px');
+      s.style.setProperty('--y',(Math.random()*600-300)+'px');
+      document.body.appendChild(s);
+      setTimeout(()=>s.remove(),1600)
+    }
+  }
+
+  function finalScene(){
+    document.body.style.background='radial-gradient(circle at top,#001014,#000)';
+    document.getElementById('final').classList.add('show');
+
+    // усиленный снег (нөсер қар)
+    for(let i=0;i<140;i++){
+      const snow=document.createElement('div');
+      snow.className='snow';
+      snow.innerHTML='❄';
+      snow.style.left=Math.random()*100+'vw';
+      snow.style.animationDuration=3+Math.random()*4+'s';
+      snow.style.fontSize=14+Math.random()*28+'px';
+      snow.style.opacity=Math.random();
+      document.body.appendChild(snow);
+    }
+  }
+
+  for(let i=0;i<60;i++){
+    const snow=document.createElement('div');
+    snow.className='snow';
+    snow.innerHTML='❄';
+    snow.style.left=Math.random()*100+'vw';
+    snow.style.animationDuration=6+Math.random()*6+'s';
+    snow.style.fontSize=12+Math.random()*24+'px';
+    document.body.appendChild(snow)
+  }
+</script>
+
+</body>
+</html>
